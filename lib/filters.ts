@@ -25,6 +25,14 @@ type PerformanceSortKey =
 
 type ArtistSortKey = "name-asc" | "name-desc" | "city-asc" | "genre-asc";
 
+type VenueFilterArgs = {
+  venues: Venue[];
+  query?: string;
+  city?: string;
+};
+
+type VenueSortKey = "name-asc" | "name-desc" | "city-asc" | "city-desc";
+
 export function filterPerformances({
   performances,
   artists,
@@ -155,4 +163,50 @@ export function getArtistFilterOptions(artists: Artist[]) {
     .sort((a, b) => a.localeCompare(b, "ko"));
 
   return { cities, genres };
+}
+
+export function filterVenues({
+  venues,
+  query = "",
+  city = "",
+}: VenueFilterArgs) {
+  const normalizedQuery = query.trim().toLowerCase();
+  const normalizedCity = city.trim().toLowerCase();
+
+  return venues.filter((venue) => {
+    const matchesQuery =
+      normalizedQuery === "" ||
+      venue.name.toLowerCase().includes(normalizedQuery) ||
+      venue.city.toLowerCase().includes(normalizedQuery);
+
+    const matchesCity =
+      normalizedCity === "" || venue.city.toLowerCase() === normalizedCity;
+
+    return matchesQuery && matchesCity;
+  });
+}
+
+export function sortVenues(venues: Venue[], sort: string = "name-asc") {
+  const copied = [...venues];
+  const sortKey = (sort || "name-asc") as VenueSortKey;
+
+  switch (sortKey) {
+    case "name-desc":
+      return copied.sort((a, b) => b.name.localeCompare(a.name, "ko"));
+    case "city-asc":
+      return copied.sort((a, b) => a.city.localeCompare(b.city, "ko"));
+    case "city-desc":
+      return copied.sort((a, b) => b.city.localeCompare(a.city, "ko"));
+    case "name-asc":
+    default:
+      return copied.sort((a, b) => a.name.localeCompare(b.name, "ko"));
+  }
+}
+
+export function getVenueFilterOptions(venues: Venue[]) {
+  const cities = Array.from(new Set(venues.map((venue) => venue.city)))
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b, "ko"));
+
+  return { cities };
 }
