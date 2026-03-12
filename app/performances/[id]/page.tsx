@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import {
   getPerformanceById,
   getArtistByName,
@@ -28,6 +29,14 @@ export default async function PerformanceDetailPage({
 
   return (
     <article className="mx-auto max-w-3xl space-y-6">
+      <Breadcrumbs
+        items={[
+          { label: "홈", href: "/" },
+          { label: "공연", href: "/performances" },
+          { label: performance.title },
+        ]}
+      />
+
       <div>
         <p className="text-sm text-neutral-500">공연 상세</p>
         <h1 className="text-3xl font-bold">{performance.title}</h1>

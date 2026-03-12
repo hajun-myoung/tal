@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import {
   getVenueById,
   getPerformancesByVenueName,
@@ -28,6 +29,14 @@ export default async function VenueDetailPage({
 
   return (
     <article className="mx-auto max-w-4xl space-y-6">
+      <Breadcrumbs
+        items={[
+          { label: "홈", href: "/" },
+          { label: "공연장", href: "/venues" },
+          { label: venue.name },
+        ]}
+      />
+
       <div>
         <p className="text-sm text-neutral-500">공연장 상세</p>
         <h1 className="text-3xl font-bold">{venue.name}</h1>
