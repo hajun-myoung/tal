@@ -5,6 +5,11 @@ import { SiteHeader } from "@/components/site-header";
 export const metadata: Metadata = {
   title: "탈(TAL)",
   description: "전통연희 공연과 예술가를 발견하는 플랫폼",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({

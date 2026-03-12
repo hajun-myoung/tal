@@ -1,10 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function SiteHeader() {
   return (
     <header className="border-b bg-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-        <Link href="/" className="text-xl font-bold">
+        <Link href="/" className="text-xl font-bold flex">
+          <Image src="/icon.png" alt="logo" width={28} height={28} />
           탈:TAL
         </Link>
 
