@@ -15,9 +15,13 @@ export default function HomePage() {
         <p className="mb-2 text-sm text-neutral-500">
           전통연희 공연 발견 플랫폼
         </p>
-        <h1 className="text-3xl font-bold">전통연희 공연을 한곳에서 찾자</h1>
+        <h1 className="text-3xl font-bold">전통연희 공연을 한곳에서</h1>
         <p className="mt-3 text-neutral-700">
           공연, 예술가, 공연장을 탐색할 수 있는 MVP 웹앱
+        </p>
+        <p className="mt-2 text-neutral-700">버그 제보, 데이터 추가 요청은</p>
+        <p className="mt-0 text-neutral-700">
+          fe.dev.denver@gmail.com 로 부탁드립니다
         </p>
 
         <div className="mt-5 flex gap-3">
