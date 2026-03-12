@@ -26,3 +26,31 @@ export function getArtistByName(name: string) {
 export function getVenueByName(name: string) {
   return venues.find((venue) => venue.name === name);
 }
+
+export function getPerformancesByArtistName(name: string) {
+  return performances.filter((performance) => performance.artist === name);
+}
+
+export function getPerformancesByVenueName(name: string) {
+  return performances.filter((performance) => performance.venue === name);
+}
+
+export function getArtistsByVenueName(name: string) {
+  const names = new Set(
+    performances
+      .filter((performance) => performance.venue === name)
+      .map((performance) => performance.artist),
+  );
+
+  return artists.filter((artist) => names.has(artist.name));
+}
+
+export function getVenuesByArtistName(name: string) {
+  const names = new Set(
+    performances
+      .filter((performance) => performance.artist === name)
+      .map((performance) => performance.venue),
+  );
+
+  return venues.filter((venue) => names.has(venue.name));
+}
