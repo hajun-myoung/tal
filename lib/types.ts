@@ -21,3 +21,12 @@ export type Venue = {
   city: string;
   source: string;
 };
+
+export type Campaign = {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  href: string;
+  posters: string[];
+};

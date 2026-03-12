@@ -1,11 +1,13 @@
 import artistsData from "@/data/artists.json";
 import performancesData from "@/data/performances.json";
 import venuesData from "@/data/venues.json";
-import type { Artist, Performance, Venue } from "./types";
+import campaignsData from "@/data/campaigns.json";
+import type { Artist, Performance, Venue, Campaign } from "./types";
 
 export const artists = artistsData as Artist[];
 export const performances = performancesData as Performance[];
 export const venues = venuesData as Venue[];
+export const campaigns = campaignsData as Campaign[];
 
 export function getArtistById(id: string) {
   return artists.find((artist) => artist.id === id);

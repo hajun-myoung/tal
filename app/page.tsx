@@ -1,12 +1,14 @@
 import Link from "next/link";
-import { artists, performances, venues } from "@/lib/data";
+import { artists, performances, venues, campaigns } from "@/lib/data";
 import { groupVenuesByCity } from "@/lib/home";
 import { PerformanceCard } from "@/components/performance-card";
 import { ArtistCard } from "@/components/artist-card";
 import { HomeSectionHeader } from "@/components/home-section-header";
 import { VenueCityGroup } from "@/components/venue-city-group";
+import { FeaturedCampaign } from "@/components/features-campaign";
 
 export default function HomePage() {
+  const featuredCampaign = campaigns[0] ?? null;
   const featuredPerformances = performances.slice(0, 3);
   const featuredArtists = artists.slice(0, 6);
   const groupedVenues = groupVenuesByCity(venues).slice(0, 3);
@@ -60,6 +62,16 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {featuredCampaign && (
+        <FeaturedCampaign
+          title={featuredCampaign.title}
+          subtitle={featuredCampaign.subtitle}
+          description={featuredCampaign.description}
+          href={featuredCampaign.href}
+          posters={featuredCampaign.posters}
+        />
+      )}
 
       <section>
         <HomeSectionHeader
