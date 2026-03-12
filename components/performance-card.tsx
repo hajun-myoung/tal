@@ -11,6 +11,7 @@ export function PerformanceCard({ performance }: { performance: Performance }) {
       <h3 className="mt-1 text-lg font-semibold">{performance.title}</h3>
       <p className="mt-2 text-sm text-neutral-700">{performance.artist}</p>
       <p className="text-sm text-neutral-500">{performance.venue}</p>
+      <p className="mt-3 text-sm underline">상세 보기</p>
     </Link>
   );
 }

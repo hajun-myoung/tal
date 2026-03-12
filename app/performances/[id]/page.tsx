@@ -1,5 +1,17 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPerformanceById } from "@/lib/data";
+import {
+  getPerformanceById,
+  getArtistByName,
+  getVenueByName,
+  performances,
+} from "@/lib/data";
+
+export function generateStaticParams() {
+  return performances.map((performance) => ({
+    id: performance.id,
+  }));
+}
 
 export default async function PerformanceDetailPage({
   params,
@@ -11,21 +23,44 @@ export default async function PerformanceDetailPage({
 
   if (!performance) return notFound();
 
+  const artist = getArtistByName(performance.artist);
+  const venue = getVenueByName(performance.venue);
+
   return (
-    <article className="mx-auto max-w-3xl space-y-4">
-      <p className="text-sm text-neutral-500">공연 상세</p>
-      <h1 className="text-3xl font-bold">{performance.title}</h1>
+    <article className="mx-auto max-w-3xl space-y-6">
+      <div>
+        <p className="text-sm text-neutral-500">공연 상세</p>
+        <h1 className="text-3xl font-bold">{performance.title}</h1>
+      </div>
 
       <div className="rounded-2xl border p-5">
-        <dl className="space-y-3 text-sm">
+        <dl className="space-y-4 text-sm">
           <div>
             <dt className="font-semibold">아티스트</dt>
-            <dd>{performance.artist}</dd>
+            <dd>
+              {artist ? (
+                <Link href={`/artists/${artist.id}`} className="underline">
+                  {performance.artist}
+                </Link>
+              ) : (
+                performance.artist
+              )}
+            </dd>
           </div>
+
           <div>
             <dt className="font-semibold">공연장</dt>
-            <dd>{performance.venue}</dd>
+            <dd>
+              {venue ? (
+                <Link href={`/venues/${venue.id}`} className="underline">
+                  {performance.venue}
+                </Link>
+              ) : (
+                performance.venue
+              )}
+            </dd>
           </div>
+
           <div>
             <dt className="font-semibold">출처</dt>
             <dd>
@@ -41,6 +76,32 @@ export default async function PerformanceDetailPage({
           </div>
         </dl>
       </div>
+
+      <section className="grid gap-4 sm:grid-cols-2">
+        {artist && (
+          <Link
+            href={`/artists/${artist.id}`}
+            className="rounded-2xl border p-4 transition hover:shadow-sm"
+          >
+            <p className="text-sm text-neutral-500">예술가 상세로 이동</p>
+            <div className="mt-1 font-semibold">{artist.name}</div>
+            <div className="text-sm text-neutral-500">
+              {artist.genre} · {artist.city}
+            </div>
+          </Link>
+        )}
+
+        {venue && (
+          <Link
+            href={`/venues/${venue.id}`}
+            className="rounded-2xl border p-4 transition hover:shadow-sm"
+          >
+            <p className="text-sm text-neutral-500">공연장 상세로 이동</p>
+            <div className="mt-1 font-semibold">{venue.name}</div>
+            <div className="text-sm text-neutral-500">{venue.city}</div>
+          </Link>
+        )}
+      </section>
     </article>
   );
 }

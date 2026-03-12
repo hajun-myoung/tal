@@ -15,6 +15,7 @@ export function ArtistCard({ artist }: { artist: Artist }) {
           {artist.note}
         </p>
       )}
+      <p className="mt-3 text-sm underline">상세 보기</p>
     </Link>
   );
 }

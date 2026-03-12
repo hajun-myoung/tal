@@ -1,6 +1,17 @@
-import { notFound } from "next/navigation";
-import { getArtistById, performances } from "@/lib/data";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import {
+  getArtistById,
+  getPerformancesByArtistName,
+  getVenuesByArtistName,
+  artists,
+} from "@/lib/data";
+
+export function generateStaticParams() {
+  return artists.map((artist) => ({
+    id: artist.id,
+  }));
+}
 
 export default async function ArtistDetailPage({
   params,
@@ -12,12 +23,11 @@ export default async function ArtistDetailPage({
 
   if (!artist) return notFound();
 
-  const relatedPerformances = performances.filter(
-    (item) => item.artist === artist.name,
-  );
+  const relatedPerformances = getPerformancesByArtistName(artist.name);
+  const relatedVenues = getVenuesByArtistName(artist.name);
 
   return (
-    <article className="mx-auto max-w-3xl space-y-6">
+    <article className="mx-auto max-w-4xl space-y-6">
       <div>
         <p className="text-sm text-neutral-500">{artist.city}</p>
         <h1 className="text-3xl font-bold">{artist.name}</h1>
@@ -52,6 +62,28 @@ export default async function ArtistDetailPage({
               >
                 <div className="font-medium">{item.title}</div>
                 <div className="text-sm text-neutral-500">{item.venue}</div>
+              </Link>
+            ))}
+          </div>
+        )}
+      </section>
+
+      <section>
+        <h2 className="mb-3 text-xl font-semibold">주요 공연장</h2>
+        {relatedVenues.length === 0 ? (
+          <p className="text-sm text-neutral-500">
+            연결된 공연장이 아직 없습니다.
+          </p>
+        ) : (
+          <div className="grid gap-3 sm:grid-cols-2">
+            {relatedVenues.map((venue) => (
+              <Link
+                key={venue.id}
+                href={`/venues/${venue.id}`}
+                className="block rounded-xl border p-4"
+              >
+                <div className="font-medium">{venue.name}</div>
+                <div className="text-sm text-neutral-500">{venue.city}</div>
               </Link>
             ))}
           </div>
