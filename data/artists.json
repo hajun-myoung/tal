@@ -1,0 +1,183 @@
+[
+{
+"id": "artist_001",
+"name": "노름마치 예술단",
+"genre": "전통연희 / 국악",
+"city": "서울",
+"source": "http://www.noreummachi.com",
+"note": "한국 전통음악 기반 월드뮤직 공연단"
+},
+{
+"id": "artist_002",
+"name": "김덕수 사물놀이",
+"genre": "사물놀이",
+"city": "서울",
+"source": "https://www.hanullim.org",
+"note": "사물놀이 장르 대표 단체"
+},
+{
+"id": "artist_003",
+"name": "국립국악원 정악단",
+"genre": "궁중음악",
+"city": "서울",
+"source": "https://www.gugak.go.kr",
+"note": "국립국악원 공연단"
+},
+{
+"id": "artist_004",
+"name": "국립국악원 민속악단",
+"genre": "민속음악",
+"city": "서울",
+"source": "https://www.gugak.go.kr",
+"note": "국립국악원 산하 공연단"
+},
+{
+"id": "artist_005",
+"name": "국립국악원 무용단",
+"genre": "전통무용",
+"city": "서울",
+"source": "https://www.gugak.go.kr",
+"note": "국립국악원 산하 공연단"
+},
+{
+"id": "artist_006",
+"name": "국립청년연희단",
+"genre": "전통연희",
+"city": "서울",
+"source": "https://www.kotya.co.kr",
+"note": "청년 전통연희단"
+},
+{
+"id": "artist_007",
+"name": "전통연희단 꼭두쇠",
+"genre": "전통연희",
+"city": "서울",
+"source": "https://www.kotpa.org",
+"note": "전통연희축제 참가 단체"
+},
+{
+"id": "artist_008",
+"name": "TAGO",
+"genre": "타악 퍼포먼스",
+"city": "서울",
+"source": "https://kccsupportersblog.wordpress.com",
+"note": "한국 전통 타악 기반 공연단"
+},
+{
+"id": "artist_009",
+"name": "국악그룹 길",
+"genre": "창작국악",
+"city": "경주",
+"source": "https://gf.garts.kr",
+"note": "창작 국악 공연단"
+},
+{
+"id": "artist_010",
+"name": "신라선예술단",
+"genre": "국악",
+"city": "경주",
+"source": "https://gf.garts.kr",
+"note": "국악 공연단"
+},
+{
+"id": "artist_011",
+"name": "앵비",
+"genre": "창작연희",
+"city": "서울",
+"source": "https://www.kotpa.org",
+"note": "전통연희축제 참여 단체"
+},
+{
+"id": "artist_012",
+"name": "토리스",
+"genre": "국악",
+"city": "서울",
+"source": "https://www.kotpa.org",
+"note": "전통연희축제 참여 단체"
+},
+{
+"id": "artist_013",
+"name": "놀이마당 울림",
+"genre": "전통연희",
+"city": "서울",
+"source": "https://www.kotpa.org",
+"note": "전통연희 공연단"
+},
+{
+"id": "artist_014",
+"name": "별별창작소",
+"genre": "창작연희",
+"city": "서울",
+"source": "https://www.kotpa.org",
+"note": "연희 창작 단체"
+},
+{
+"id": "artist_015",
+"name": "도리",
+"genre": "사물놀이",
+"city": "서울",
+"source": "https://www.gugak.go.kr",
+"note": "사물놀이 공연단"
+},
+{
+"id": "artist_016",
+"name": "하회별신굿탈놀이보존회",
+"genre": "탈춤",
+"city": "안동",
+"source": "https://ich.unesco.org",
+"note": "탈춤 보존단체"
+},
+{
+"id": "artist_017",
+"name": "양주별산대놀이보존회",
+"genre": "탈춤",
+"city": "양주",
+"source": "문화재청",
+"note": "탈춤 보존단체"
+},
+{
+"id": "artist_018",
+"name": "봉산탈춤보존회",
+"genre": "탈춤",
+"city": "황해도",
+"source": "문화재청",
+"note": "탈춤 보존단체"
+},
+{
+"id": "artist_019",
+"name": "강령탈춤보존회",
+"genre": "탈춤",
+"city": "황해도",
+"source": "문화재청",
+"note": "탈춤 보존단체"
+},
+{
+"id": "artist_020",
+"name": "국립남도국악원 연주단",
+"genre": "국악",
+"city": "진도",
+"source": "https://namdo.gugak.go.kr"
+},
+{
+"id": "artist_021",
+"name": "국립민속국악원 연주단",
+"genre": "국악",
+"city": "남원",
+"source": "https://namwon.gugak.go.kr"
+},
+{
+"id": "artist_022",
+"name": "국립부산국악원 연주단",
+"genre": "국악",
+"city": "부산",
+"source": "https://busan.gugak.go.kr"
+},
+{
+"id": "artist_023",
+"name": "연희단 팔산대",
+"genre": "전통연희",
+"city": "서울",
+"source": "https://www.skyedaily.com",
+"note": "사물놀이 기반 공연단"
+}
+]
