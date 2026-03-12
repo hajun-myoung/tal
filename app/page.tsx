@@ -31,7 +31,9 @@ export default function HomePage() {
           <p className="mt-4 max-w-2xl text-sm leading-6 text-neutral-300 sm:text-base">
             현재 개발중인 앱으로, 부족한 부분이 많습니다.
             <br />
-            버그 제보, 데이터 추가 요청은
+            버그 제보, 데이터 추가 요청 또는
+            <br />
+            아이디어 제보 및 이 프로젝트에 합류하고 싶으신 분은
             <br />
             fe.dev.denver@gmail.com 으로 부탁드립니다.
           </p>
