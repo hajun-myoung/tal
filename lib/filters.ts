@@ -9,6 +9,13 @@ type FilterArgs = {
   genre?: string;
 };
 
+type SortKey =
+  | "title-asc"
+  | "title-desc"
+  | "artist-asc"
+  | "artist-desc"
+  | "venue-asc";
+
 export function filterPerformances({
   performances,
   artists,
@@ -42,6 +49,28 @@ export function filterPerformances({
 
     return matchesQuery && matchesCity && matchesGenre;
   });
+}
+
+export function sortPerformances(
+  performances: Performance[],
+  sort: string = "title-asc",
+) {
+  const copied = [...performances];
+  const sortKey = (sort || "title-asc") as SortKey;
+
+  switch (sortKey) {
+    case "title-desc":
+      return copied.sort((a, b) => b.title.localeCompare(a.title, "ko"));
+    case "artist-asc":
+      return copied.sort((a, b) => a.artist.localeCompare(b.artist, "ko"));
+    case "artist-desc":
+      return copied.sort((a, b) => b.artist.localeCompare(a.artist, "ko"));
+    case "venue-asc":
+      return copied.sort((a, b) => a.venue.localeCompare(b.venue, "ko"));
+    case "title-asc":
+    default:
+      return copied.sort((a, b) => a.title.localeCompare(b.title, "ko"));
+  }
 }
 
 export function getPerformanceFilterOptions(
