@@ -1,6 +1,6 @@
 import type { Performance, Artist, Venue } from "@/lib/types";
 
-type FilterArgs = {
+type PerformanceFilterArgs = {
   performances: Performance[];
   artists: Artist[];
   venues: Venue[];
@@ -9,12 +9,21 @@ type FilterArgs = {
   genre?: string;
 };
 
-type SortKey =
+type ArtistFilterArgs = {
+  artists: Artist[];
+  query?: string;
+  city?: string;
+  genre?: string;
+};
+
+type PerformanceSortKey =
   | "title-asc"
   | "title-desc"
   | "artist-asc"
   | "artist-desc"
   | "venue-asc";
+
+type ArtistSortKey = "name-asc" | "name-desc" | "city-asc" | "genre-asc";
 
 export function filterPerformances({
   performances,
@@ -23,7 +32,7 @@ export function filterPerformances({
   query = "",
   city = "",
   genre = "",
-}: FilterArgs) {
+}: PerformanceFilterArgs) {
   const normalizedQuery = query.trim().toLowerCase();
   const normalizedCity = city.trim().toLowerCase();
   const normalizedGenre = genre.trim().toLowerCase();
@@ -56,7 +65,7 @@ export function sortPerformances(
   sort: string = "title-asc",
 ) {
   const copied = [...performances];
-  const sortKey = (sort || "title-asc") as SortKey;
+  const sortKey = (sort || "title-asc") as PerformanceSortKey;
 
   switch (sortKey) {
     case "title-desc":
@@ -84,6 +93,64 @@ export function getPerformanceFilterOptions(
     .sort((a, b) => a.localeCompare(b, "ko"));
 
   const genres = Array.from(new Set(artists.map((a) => a.genre)))
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b, "ko"));
+
+  return { cities, genres };
+}
+
+export function filterArtists({
+  artists,
+  query = "",
+  city = "",
+  genre = "",
+}: ArtistFilterArgs) {
+  const normalizedQuery = query.trim().toLowerCase();
+  const normalizedCity = city.trim().toLowerCase();
+  const normalizedGenre = genre.trim().toLowerCase();
+
+  return artists.filter((artist) => {
+    const matchesQuery =
+      normalizedQuery === "" ||
+      artist.name.toLowerCase().includes(normalizedQuery) ||
+      artist.genre.toLowerCase().includes(normalizedQuery) ||
+      artist.city.toLowerCase().includes(normalizedQuery) ||
+      artist.note?.toLowerCase().includes(normalizedQuery);
+
+    const matchesCity =
+      normalizedCity === "" || artist.city.toLowerCase() === normalizedCity;
+
+    const matchesGenre =
+      normalizedGenre === "" ||
+      artist.genre.toLowerCase().includes(normalizedGenre);
+
+    return matchesQuery && matchesCity && matchesGenre;
+  });
+}
+
+export function sortArtists(artists: Artist[], sort: string = "name-asc") {
+  const copied = [...artists];
+  const sortKey = (sort || "name-asc") as ArtistSortKey;
+
+  switch (sortKey) {
+    case "name-desc":
+      return copied.sort((a, b) => b.name.localeCompare(a.name, "ko"));
+    case "city-asc":
+      return copied.sort((a, b) => a.city.localeCompare(b.city, "ko"));
+    case "genre-asc":
+      return copied.sort((a, b) => a.genre.localeCompare(b.genre, "ko"));
+    case "name-asc":
+    default:
+      return copied.sort((a, b) => a.name.localeCompare(b.name, "ko"));
+  }
+}
+
+export function getArtistFilterOptions(artists: Artist[]) {
+  const cities = Array.from(new Set(artists.map((artist) => artist.city)))
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b, "ko"));
+
+  const genres = Array.from(new Set(artists.map((artist) => artist.genre)))
     .filter(Boolean)
     .sort((a, b) => a.localeCompare(b, "ko"));
 
