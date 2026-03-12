@@ -26,12 +26,14 @@ export default function HomePage() {
           <p className="mt-4 max-w-2xl text-sm leading-6 text-neutral-300 sm:text-base">
             공연을 찾고, 예술가를 탐색하고, 공연장을 중심으로
             <br />
-            전통연희 생태계를 연결하는 MVP 웹앱입니다
+            전통연희 생태계를 연결하는 MVP 웹앱입니다.
           </p>
           <p className="mt-4 max-w-2xl text-sm leading-6 text-neutral-300 sm:text-base">
+            현재 개발중인 앱으로, 부족한 부분이 많습니다.
+            <br />
             버그 제보, 데이터 추가 요청은
             <br />
-            fe.dev.denver@gmail.com 으로 부탁드립니다
+            fe.dev.denver@gmail.com 으로 부탁드립니다.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
